@@ -38,7 +38,6 @@ class ViewController: UIViewController {
             gameLost()
         }
         
-        //mainView.backgroundColor = UIColor.blueColor()
     }
     
     @IBAction func swipeDown(sender: UISwipeGestureRecognizer) {
@@ -51,7 +50,6 @@ class ViewController: UIViewController {
             gameLost()
         }
         
-        //mainView.backgroundColor = UIColor.redColor()
     }
     
     @IBAction func swipeLeft(sender: UISwipeGestureRecognizer) {
@@ -64,7 +62,6 @@ class ViewController: UIViewController {
             gameLost()
         }
         
-        //mainView.backgroundColor = UIColor.greenColor()
     }
     
     @IBAction func swipeRight(sender: UISwipeGestureRecognizer) {
@@ -76,8 +73,7 @@ class ViewController: UIViewController {
         } else {
             gameLost()
         }
-        
-        //mainView.backgroundColor = UIColor.orangeColor()
+
     }
     
     func changeColor() {
