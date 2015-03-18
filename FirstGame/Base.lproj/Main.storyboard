@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pzV-xC-Gq3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pzV-xC-Gq3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--Game-->
@@ -26,6 +26,7 @@
                     </view>
                     <connections>
                         <outlet property="mainView" destination="kh9-bI-dsS" id="vfi-rZ-NDq"/>
+                        <outlet property="scoreLabel" destination="f6k-Uo-SBP" id="7Lz-HM-Bga"/>
                         <segue destination="5XY-cq-nTe" kind="show" identifier="game_over" id="rJd-53-wHL"/>
                     </connections>
                 </viewController>
@@ -53,10 +54,10 @@
             </objects>
             <point key="canvasLocation" x="352" y="-351"/>
         </scene>
-        <!--View Controller-->
+        <!--instructions-->
         <scene sceneID="xyl-i9-7Wy">
             <objects>
-                <viewController id="Vph-8G-Ab5" sceneMemberID="viewController">
+                <viewController title="instructions" id="Vph-8G-Ab5" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yNe-5n-jJY"/>
                         <viewControllerLayoutGuide type="bottom" id="o5d-GK-vet"/>
@@ -65,8 +66,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="instructions" translatesAutoresizingMaskIntoConstraints="NO" id="7M8-4e-daR">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="instructions" translatesAutoresizingMaskIntoConstraints="NO" id="7M8-4e-daR">
+                                <rect key="frame" x="140" y="16" width="320" height="568"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="568" id="2UL-Ce-EWb"/>
                                     <constraint firstAttribute="width" constant="320" id="bWp-Zp-5zZ"/>
@@ -104,7 +105,7 @@
         <!--GameOver-->
         <scene sceneID="8kg-93-fLT">
             <objects>
-                <viewController title="GameOver" id="5XY-cq-nTe" sceneMemberID="viewController">
+                <viewController title="GameOver" id="5XY-cq-nTe" customClass="GameOverViewController" customModule="FirstGame" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YIV-Rn-ibk"/>
                         <viewControllerLayoutGuide type="bottom" id="KhT-UW-9zU"/>
@@ -119,8 +120,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="twa-WC-lGX">
-                                <rect key="frame" x="279" y="327" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="twa-WC-lGX">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="42" id="HAb-65-MDH"/>
                                 </constraints>
@@ -128,8 +128,18 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="40c-2Y-jvu">
-                                <rect key="frame" x="264" y="356" width="73" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f6k-Uo-SBP">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3X-HY-csF">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="40c-2Y-jvu">
+                                <rect key="frame" x="264" y="340" width="73" height="30"/>
                                 <state key="normal" title="Play Again">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -140,14 +150,22 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="f6k-Uo-SBP" firstAttribute="top" secondItem="twa-WC-lGX" secondAttribute="bottom" constant="5" id="1oi-Y7-00y"/>
                             <constraint firstAttribute="centerY" secondItem="m6M-9V-58I" secondAttribute="centerY" id="4kr-gg-gUP"/>
+                            <constraint firstAttribute="centerX" secondItem="40c-2Y-jvu" secondAttribute="centerX" id="529-uc-OvO"/>
+                            <constraint firstItem="r3X-HY-csF" firstAttribute="top" secondItem="f6k-Uo-SBP" secondAttribute="bottom" constant="6" id="63d-Ld-xVZ"/>
                             <constraint firstAttribute="centerX" secondItem="m6M-9V-58I" secondAttribute="centerX" id="Ovw-dF-P9C"/>
                             <constraint firstAttribute="centerX" secondItem="twa-WC-lGX" secondAttribute="centerX" id="PdO-QY-dax"/>
-                            <constraint firstAttribute="centerX" secondItem="40c-2Y-jvu" secondAttribute="centerX" id="Vtq-g0-kjz"/>
+                            <constraint firstAttribute="centerX" secondItem="f6k-Uo-SBP" secondAttribute="centerX" id="fFn-6y-t4S"/>
+                            <constraint firstItem="40c-2Y-jvu" firstAttribute="top" secondItem="r3X-HY-csF" secondAttribute="bottom" constant="6" id="mpX-On-1lK"/>
                             <constraint firstItem="twa-WC-lGX" firstAttribute="top" secondItem="m6M-9V-58I" secondAttribute="bottom" constant="4" id="nWz-zS-ZEd"/>
-                            <constraint firstItem="40c-2Y-jvu" firstAttribute="top" secondItem="m6M-9V-58I" secondAttribute="bottom" constant="40" id="w05-Se-DxJ"/>
+                            <constraint firstAttribute="centerX" secondItem="r3X-HY-csF" secondAttribute="centerX" id="yZc-HP-poJ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="highscoreLabel" destination="r3X-HY-csF" id="hL4-lh-oBd"/>
+                        <outlet property="scoreLabel" destination="f6k-Uo-SBP" id="CND-Fe-CKI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="auU-p8-lRu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

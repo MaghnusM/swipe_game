@@ -29,7 +29,6 @@ class ViewController: UIViewController {
     }
     
     @IBOutlet var mainView: UIView!
-    @IBOutlet weak var scoreLabel: UILabel!
     
     @IBAction func swipeUp(sender: UISwipeGestureRecognizer) {
         
@@ -125,7 +124,13 @@ class ViewController: UIViewController {
     }
     
     func resetTimer() {
+        timer.invalidate()
         timer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: Selector("gameLost"), userInfo: nil, repeats: false)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var nextView: GameOverViewController = segue.destinationViewController as GameOverViewController
+        nextView.score = self.score
     }
 
     override func didReceiveMemoryWarning() {
