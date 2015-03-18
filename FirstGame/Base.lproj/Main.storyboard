@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pzV-xC-Gq3">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <scenes>
+        <!--Game-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController title="Game" id="vXZ-lx-hvc" customClass="ViewController" customModule="FirstGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="JZG-PB-hCS" appends="YES" id="e0G-bQ-FiB"/>
+                            <outletCollection property="gestureRecognizers" destination="19d-qP-mHL" appends="YES" id="BJ6-G3-Fyf"/>
+                            <outletCollection property="gestureRecognizers" destination="qpd-ey-JgS" appends="YES" id="wFE-dV-wC1"/>
+                            <outletCollection property="gestureRecognizers" destination="9Oo-OQ-f17" appends="YES" id="uHK-L6-Ich"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="mainView" destination="kh9-bI-dsS" id="vfi-rZ-NDq"/>
+                        <segue destination="5XY-cq-nTe" kind="show" identifier="game_over" id="rJd-53-wHL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="up" id="JZG-PB-hCS">
+                    <connections>
+                        <action selector="swipeUp:" destination="vXZ-lx-hvc" id="p7N-7s-z1I"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="down" id="19d-qP-mHL">
+                    <connections>
+                        <action selector="swipeDown:" destination="vXZ-lx-hvc" id="YsP-oO-h7c"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="9Oo-OQ-f17">
+                    <connections>
+                        <action selector="swipeLeft:" destination="vXZ-lx-hvc" id="QYN-3c-PMW"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="qpd-ey-JgS">
+                    <connections>
+                        <action selector="swipeRight:" destination="vXZ-lx-hvc" id="ew4-KE-739"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="352" y="-351"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="xyl-i9-7Wy">
+            <objects>
+                <viewController id="Vph-8G-Ab5" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yNe-5n-jJY"/>
+                        <viewControllerLayoutGuide type="bottom" id="o5d-GK-vet"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XfW-Wp-tm5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eth-vj-FFc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="352" y="396"/>
+        </scene>
+        <!--GameOver-->
+        <scene sceneID="8kg-93-fLT">
+            <objects>
+                <viewController title="GameOver" id="5XY-cq-nTe" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YIV-Rn-ibk"/>
+                        <viewControllerLayoutGuide type="bottom" id="KhT-UW-9zU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CgS-Ew-WR4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You Lost" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m6M-9V-58I">
+                                <rect key="frame" x="236" y="280" width="128" height="39"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="40c-2Y-jvu">
+                                <rect key="frame" x="264" y="327" width="73" height="30"/>
+                                <state key="normal" title="Play Again">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="pzV-xC-Gq3" kind="show" id="MGl-T4-Lgc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="m6M-9V-58I" secondAttribute="centerY" id="4kr-gg-gUP"/>
+                            <constraint firstAttribute="centerX" secondItem="m6M-9V-58I" secondAttribute="centerX" id="Ovw-dF-P9C"/>
+                            <constraint firstAttribute="centerX" secondItem="40c-2Y-jvu" secondAttribute="centerX" id="Vtq-g0-kjz"/>
+                            <constraint firstItem="40c-2Y-jvu" firstAttribute="top" secondItem="m6M-9V-58I" secondAttribute="bottom" id="w05-Se-DxJ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="auU-p8-lRu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1014" y="-351"/>
+        </scene>
+        <!--MainMenu-->
+        <scene sceneID="ITh-GD-Dg3">
+            <objects>
+                <viewController title="MainMenu" id="pzV-xC-Gq3" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NyU-Ov-btz"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ycy-Fj-Cbm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1aZ-ZQ-OeU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5sM-gm-8kM">
+                                <rect key="frame" x="250" y="275" width="100" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="0vp-zc-5Od"/>
+                                    <constraint firstAttribute="width" constant="100" id="CnR-DE-Qn2"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="play button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="vXZ-lx-hvc" kind="show" id="UMs-1Q-Ggq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XbD-rO-IeP">
+                                <rect key="frame" x="250" y="333" width="100" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="YJV-4w-Xbc"/>
+                                    <constraint firstAttribute="height" constant="40" id="tpU-Oj-PLH"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="instructions button - new">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Vph-8G-Ab5" kind="show" id="oTC-7W-Ffo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XbD-rO-IeP" firstAttribute="top" secondItem="5sM-gm-8kM" secondAttribute="bottom" constant="8" id="6aL-gn-HZF"/>
+                            <constraint firstAttribute="centerX" secondItem="XbD-rO-IeP" secondAttribute="centerX" id="6kg-Tc-WHa"/>
+                            <constraint firstAttribute="centerX" secondItem="5sM-gm-8kM" secondAttribute="centerX" id="FnT-2N-295"/>
+                            <constraint firstAttribute="centerY" secondItem="5sM-gm-8kM" secondAttribute="centerY" id="nZe-gC-E9o"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aSf-Cd-3rD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-338" y="-351"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="instructions button - new" width="421" height="171"/>
+        <image name="play button" width="633" height="321"/>
+    </resources>
+</document>
