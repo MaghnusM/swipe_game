@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>D14B5C97-536B-4DB6-A604-CB276ECD2482</string>
+	<string>34F66EE2-BDEE-4235-B08C-9B0239D8C20A</string>
 	<key>IDESourceControlProjectName</key>
 	<string>FirstGame</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>47977BA66D9169929292D1324805D6565C74C748</string>
 			<key>IDESourceControlWCCName</key>
-			<string>FirstGame</string>
+			<string>swipe_game</string>
 		</dict>
 	</array>
 </dict>
