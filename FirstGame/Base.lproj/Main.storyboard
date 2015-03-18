@@ -64,7 +64,37 @@
                     <view key="view" contentMode="scaleToFill" id="XfW-Wp-tm5">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="instructions" translatesAutoresizingMaskIntoConstraints="NO" id="7M8-4e-daR">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="568" id="2UL-Ce-EWb"/>
+                                    <constraint firstAttribute="width" constant="320" id="bWp-Zp-5zZ"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xo8-Wm-ZFX">
+                                <rect key="frame" x="252" y="79" width="97" height="77"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="7PZ-4y-exV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="pzV-xC-Gq3" kind="show" id="jAq-LB-ftD"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="xo8-Wm-ZFX" secondAttribute="centerX" id="KTW-mo-OLn"/>
+                            <constraint firstAttribute="centerX" secondItem="7M8-4e-daR" secondAttribute="centerX" id="LS0-h7-B4e"/>
+                            <constraint firstItem="o5d-GK-vet" firstAttribute="top" secondItem="xo8-Wm-ZFX" secondAttribute="bottom" constant="444" id="dsY-mv-vuU"/>
+                            <constraint firstAttribute="centerY" secondItem="7M8-4e-daR" secondAttribute="centerY" id="ele-4o-CZj"/>
+                            <constraint firstItem="xo8-Wm-ZFX" firstAttribute="top" secondItem="yNe-5n-jJY" secondAttribute="bottom" constant="59" id="r6d-dc-XwE"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eth-vj-FFc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -89,8 +119,17 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="twa-WC-lGX">
+                                <rect key="frame" x="279" y="327" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="HAb-65-MDH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="40c-2Y-jvu">
-                                <rect key="frame" x="264" y="327" width="73" height="30"/>
+                                <rect key="frame" x="264" y="356" width="73" height="30"/>
                                 <state key="normal" title="Play Again">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -103,8 +142,10 @@
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="m6M-9V-58I" secondAttribute="centerY" id="4kr-gg-gUP"/>
                             <constraint firstAttribute="centerX" secondItem="m6M-9V-58I" secondAttribute="centerX" id="Ovw-dF-P9C"/>
+                            <constraint firstAttribute="centerX" secondItem="twa-WC-lGX" secondAttribute="centerX" id="PdO-QY-dax"/>
                             <constraint firstAttribute="centerX" secondItem="40c-2Y-jvu" secondAttribute="centerX" id="Vtq-g0-kjz"/>
-                            <constraint firstItem="40c-2Y-jvu" firstAttribute="top" secondItem="m6M-9V-58I" secondAttribute="bottom" id="w05-Se-DxJ"/>
+                            <constraint firstItem="twa-WC-lGX" firstAttribute="top" secondItem="m6M-9V-58I" secondAttribute="bottom" constant="4" id="nWz-zS-ZEd"/>
+                            <constraint firstItem="40c-2Y-jvu" firstAttribute="top" secondItem="m6M-9V-58I" secondAttribute="bottom" constant="40" id="w05-Se-DxJ"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -166,7 +207,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="instructions" width="1333" height="2000"/>
         <image name="instructions button - new" width="421" height="171"/>
         <image name="play button" width="633" height="321"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="MGl-T4-Lgc"/>
+    </inferredMetricsTieBreakers>
 </document>

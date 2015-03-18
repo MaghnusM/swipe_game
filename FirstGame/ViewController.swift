@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     var lastColor = 0
     var currentColor = 5
     
+    var score = 0
+    
     let BLUE = 0
     let GREEN = 1
     let RED = 2
@@ -27,11 +29,14 @@ class ViewController: UIViewController {
     }
     
     @IBOutlet var mainView: UIView!
+    @IBOutlet weak var scoreLabel: UILabel!
     
     @IBAction func swipeUp(sender: UISwipeGestureRecognizer) {
         
         if (currentColor == BLUE) {
             println("CORRECT")
+            score++
+            
             changeColor()
             resetTimer()
         } else {
@@ -44,6 +49,8 @@ class ViewController: UIViewController {
         
         if (currentColor == GREEN) {
             println("CORRECT")
+            score++
+            
             changeColor()
             resetTimer()
         } else {
@@ -56,6 +63,8 @@ class ViewController: UIViewController {
         
         if (currentColor == RED) {
             println("CORRECT")
+            score++
+            
             changeColor()
             resetTimer()
         } else {
@@ -68,6 +77,8 @@ class ViewController: UIViewController {
         
         if (currentColor == ORANGE) {
             println("CORRECT")
+            score++
+            
             changeColor()
             resetTimer()
         } else {
