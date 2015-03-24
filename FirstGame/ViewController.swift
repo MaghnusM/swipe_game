@@ -15,11 +15,14 @@ class ViewController: UIViewController {
     var currentColor = 5
     
     var score = 0
+    var difficulty = 3.0
     
     let BLUE = 0
     let GREEN = 1
     let RED = 2
     let ORANGE = 3
+    
+    @IBOutlet weak var scoreLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,6 +93,8 @@ class ViewController: UIViewController {
         var c = Int(arc4random_uniform(4)) // picks a random number 0-3
         var color : UIColor
         
+        scoreLabel.text = "Score: \(score)"
+        
         //make sure that it does not choose the same color twice in a row
         if (c == lastColor) {
             if (c < 3) {
@@ -124,8 +129,20 @@ class ViewController: UIViewController {
     }
     
     func resetTimer() {
+        
+        switch score {
+        case 0...5:
+            difficulty = 3.0
+        case 6...10:
+            difficulty = 2.0
+        case 11...15:
+            difficulty = 1.0
+        default:
+            difficulty = 0.5
+        }
+        
         timer.invalidate()
-        timer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: Selector("gameLost"), userInfo: nil, repeats: false)
+        timer = NSTimer.scheduledTimerWithTimeInterval(difficulty, target: self, selector: Selector("gameLost"), userInfo: nil, repeats: false)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
