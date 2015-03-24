@@ -23,12 +23,27 @@ class FileManager {
     
     func writeScore(score:Int) {
         let s = String(score)
-        s.writeToFile(path, atomically: true, encoding: NSUTF8StringEncoding, error: nil);
+        s.writeToFile(path, atomically: false, encoding: NSUTF8StringEncoding, error: nil)
     }
     
     func readScore() -> Int {
-        let s = String(contentsOfFile: path, encoding: NSUTF8StringEncoding, error: nil)!
-        return s.toInt()!
+        checkFile() //ensures that the file exists
+        
+        var s = String(contentsOfFile: path, encoding: NSUTF8StringEncoding, error: nil)! // reads the contents of the file
+
+        s = s.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) //removes any whitespace characters that prevent converting the string to an int
+
+        return s.toInt()! //converts the string to an int and returns it
+    }
+    
+    func checkFile() {
+        let manager = NSFileManager.defaultManager()
+        //println(path)
+        
+        if (!manager.fileExistsAtPath(path)) {
+            let s = "0"
+            s.writeToFile(path, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+        }
     }
     
 }
