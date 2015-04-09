@@ -22,6 +22,8 @@ class ViewController: UIViewController {
     let RED = 2
     let ORANGE = 3
     
+    var backgroundView = UIView()
+    
     @IBOutlet weak var scoreLabel: UILabel!
     
     override func viewDidLoad() {
@@ -118,7 +120,34 @@ class ViewController: UIViewController {
             color = UIColor.whiteColor()
         }
         
-        mainView.backgroundColor = color //sets the background color to the random color
+        let screen = UIScreen.mainScreen().bounds // gets the constraints of the screen
+        var transform : CGAffineTransform // sets up the transform
+
+        // sets the transform based on the color of the previous view
+        switch lastColor {
+        case BLUE:
+            transform = CGAffineTransformMakeTranslation(0.0, -1 * screen.height)
+        case GREEN:
+            transform = CGAffineTransformMakeTranslation(0.0, screen.height)
+        case RED:
+            transform = CGAffineTransformMakeTranslation(-1 * screen.width, 0.0)
+        case ORANGE:
+            transform = CGAffineTransformMakeTranslation(screen.width, 0.0)
+        default:
+            transform = CGAffineTransformMakeTranslation(0.0, 0.0)
+        }
+
+        var prevBackgroundView = backgroundView
+        
+        // creates a new view with the new color and inserts it underneath
+        backgroundView = UIView(frame: CGRectMake(0, 0, screen.width, screen.height))
+        backgroundView.backgroundColor = color
+        mainView.insertSubview(backgroundView, belowSubview: prevBackgroundView)
+        
+        // creates the animation for the previous view to move away and reveal the new view
+        UIView.animateWithDuration(2.0, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 5.0, options: nil, animations: {prevBackgroundView.transform = transform}, completion: nil)
+        
+        //mainView.backgroundColor = color //sets the background color to the random color
         currentColor = c
         lastColor = c
     }
