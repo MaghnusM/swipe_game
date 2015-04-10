@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     
     var backgroundView = UIView()
     
-    @IBOutlet weak var scoreLabel: UILabel!
+    var arrow = UIImage(named: "arrow")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,27 +95,25 @@ class ViewController: UIViewController {
         var c = Int(arc4random_uniform(4)) // picks a random number 0-3
         var color : UIColor
         
-        scoreLabel.text = "Score: \(score)"
-        
         //make sure that it does not choose the same color twice in a row
         if (c == lastColor) {
             if (c < 3) {
                 c++
             } else {
-                c--
+                c-=2
             }
         }
         
         //takes the random number and uses it to pick a color
         switch c {
         case BLUE:
-            color = UIColor.blueColor()
+            color = UIColor(red: 0.15, green: 0.32, blue: 0.7, alpha: 1.0)
         case GREEN:
-            color = UIColor.greenColor()
+            color = UIColor(red: 0, green: 0.8, blue: 0.4, alpha: 1.0)
         case RED:
-            color = UIColor.redColor()
+            color = UIColor(red: 1.0, green: 0.16, blue: 0.24, alpha: 1.0)
         case ORANGE:
-            color = UIColor.orangeColor()
+            color = UIColor(red: 1.0, green: 0.43, blue: 0.2, alpha: 1.0)
         default:
             color = UIColor.whiteColor()
         }
@@ -144,6 +142,60 @@ class ViewController: UIViewController {
         backgroundView.backgroundColor = color
         mainView.insertSubview(backgroundView, belowSubview: prevBackgroundView)
         
+        var arrowView = UIImageView()
+        arrowView.image = arrow
+        backgroundView.addSubview(arrowView)
+        arrowView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        
+        // centers the arrow horizontally
+        let centerX = NSLayoutConstraint(item: arrowView, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: backgroundView, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
+        backgroundView.addConstraint(centerX)
+        
+        // centers the arrow vertically
+        let centerY = NSLayoutConstraint(item: arrowView, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: backgroundView, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0)
+        backgroundView.addConstraint(centerY)
+        
+        // sets the dimmensions of the arrow to width = 185, height = 200
+        let views = ["arrowView" : arrowView]
+        let constrainWidth = NSLayoutConstraint.constraintsWithVisualFormat("V:[arrowView(200)]", options: NSLayoutFormatOptions(0), metrics: nil, views: views)
+        backgroundView.addConstraints(constrainWidth)
+        let constrainHeight = NSLayoutConstraint.constraintsWithVisualFormat("H:[arrowView(185)]", options: NSLayoutFormatOptions(0), metrics: nil, views: views)
+        backgroundView.addConstraints(constrainHeight)
+        
+        // create the score label
+        var scoreLabel = UILabel()
+        scoreLabel.text = "Score: \(score)"
+        backgroundView.addSubview(scoreLabel)
+        scoreLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        
+        // position the score label using constraints
+        let labelCenterX = NSLayoutConstraint(item: scoreLabel, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: backgroundView, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
+        backgroundView.addConstraint(labelCenterX)
+        let labelBottomY = NSLayoutConstraint(item: scoreLabel, attribute: NSLayoutAttribute.BottomMargin, relatedBy: NSLayoutRelation.Equal, toItem: backgroundView, attribute: NSLayoutAttribute.BottomMargin, multiplier: 1, constant: -10)
+        backgroundView.addConstraint(labelBottomY)
+        
+        // setup the rotation for the arrow
+        let pi : CGFloat = 3.14159
+        var arrowRotate : CGAffineTransform
+        
+        switch c {
+        case BLUE:
+            arrowRotate = CGAffineTransformMakeRotation(0)
+        case GREEN:
+            arrowRotate = CGAffineTransformMakeRotation(pi)
+        case RED:
+            arrowRotate = CGAffineTransformMakeRotation(3*pi/2)
+        case ORANGE:
+            arrowRotate = CGAffineTransformMakeRotation(pi/2)
+        default:
+            arrowRotate = CGAffineTransformMakeRotation(0)
+        }
+        
+        arrowView.transform = arrowRotate // rotates the arrow in the correct direction based on color
+        
+        // fade the arrow out based on the current difficulty
+        UIView.animateWithDuration(difficulty, delay: 0.0, options: nil, animations: {arrowView.alpha = 0}, completion: nil)
+        
         // creates the animation for the previous view to move away and reveal the new view
         UIView.animateWithDuration(2.0, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 5.0, options: nil, animations: {prevBackgroundView.transform = transform}, completion: nil)
         
@@ -167,7 +219,7 @@ class ViewController: UIViewController {
         case 11...15:
             difficulty = 1.0
         default:
-            difficulty = 0.5
+            difficulty = 0.75
         }
         
         timer.invalidate()

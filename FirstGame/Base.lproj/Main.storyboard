@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pzV-xC-Gq3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pzV-xC-Gq3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
         <!--Game-->
@@ -15,20 +15,8 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="op7-W0-6KM">
-                                <rect key="frame" x="279" y="559" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstAttribute="centerX" secondItem="op7-W0-6KM" secondAttribute="centerX" id="udP-Qa-1JG"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="op7-W0-6KM" secondAttribute="bottom" constant="10" id="vdh-pK-kHo"/>
-                        </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="JZG-PB-hCS" appends="YES" id="e0G-bQ-FiB"/>
                             <outletCollection property="gestureRecognizers" destination="19d-qP-mHL" appends="YES" id="BJ6-G3-Fyf"/>
@@ -38,7 +26,6 @@
                     </view>
                     <connections>
                         <outlet property="mainView" destination="kh9-bI-dsS" id="vfi-rZ-NDq"/>
-                        <outlet property="scoreLabel" destination="op7-W0-6KM" id="46m-9V-JXN"/>
                         <segue destination="5XY-cq-nTe" kind="show" identifier="game_over" id="rJd-53-wHL"/>
                     </connections>
                 </viewController>
