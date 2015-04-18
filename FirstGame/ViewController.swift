@@ -29,7 +29,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        changeColor()
+        firstChangeColor()
+        //changeColor()
         resetTimer()
     }
     
@@ -164,14 +165,16 @@ class ViewController: UIViewController {
         
         // create the score label
         var scoreLabel = UILabel()
-        scoreLabel.text = "Score: \(score)"
+        scoreLabel.text = "\(score)"
+        scoreLabel.textColor = UIColor.whiteColor()
+        scoreLabel.font = UIFont(name: "Helvetica Bold", size: 40)
         backgroundView.addSubview(scoreLabel)
         scoreLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
         
         // position the score label using constraints
         let labelCenterX = NSLayoutConstraint(item: scoreLabel, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: backgroundView, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
         backgroundView.addConstraint(labelCenterX)
-        let labelBottomY = NSLayoutConstraint(item: scoreLabel, attribute: NSLayoutAttribute.BottomMargin, relatedBy: NSLayoutRelation.Equal, toItem: backgroundView, attribute: NSLayoutAttribute.BottomMargin, multiplier: 1, constant: -10)
+        let labelBottomY = NSLayoutConstraint(item: scoreLabel, attribute: NSLayoutAttribute.TopMargin, relatedBy: NSLayoutRelation.Equal, toItem: backgroundView, attribute: NSLayoutAttribute.TopMargin, multiplier: 1, constant: 20)
         backgroundView.addConstraint(labelBottomY)
         
         // setup the rotation for the arrow
@@ -226,6 +229,88 @@ class ViewController: UIViewController {
         timer = NSTimer.scheduledTimerWithTimeInterval(difficulty, target: self, selector: Selector("gameLost"), userInfo: nil, repeats: false)
     }
     
+    func firstChangeColor() {
+        var c = Int(arc4random_uniform(4)) // picks a random number 0-3
+        var color : UIColor
+        
+        //takes the random number and uses it to pick a color
+        switch c {
+        case BLUE:
+            color = UIColor(red: 0.15, green: 0.32, blue: 0.7, alpha: 1.0)
+        case GREEN:
+            color = UIColor(red: 0, green: 0.8, blue: 0.4, alpha: 1.0)
+        case RED:
+            color = UIColor(red: 1.0, green: 0.16, blue: 0.24, alpha: 1.0)
+        case ORANGE:
+            color = UIColor(red: 1.0, green: 0.43, blue: 0.2, alpha: 1.0)
+        default:
+            color = UIColor.whiteColor()
+        }
+        
+        let screen = UIScreen.mainScreen().bounds // gets the constraints of the screen
+
+        // creates a new view with the new color
+        backgroundView = UIView(frame: CGRectMake(0, 0, screen.width, screen.height))
+        backgroundView.backgroundColor = color
+        mainView.addSubview(backgroundView)
+        
+        // create the score label
+        var scoreLabel = UILabel()
+        scoreLabel.text = "\(score)"
+        scoreLabel.textColor = UIColor.whiteColor()
+        scoreLabel.font = UIFont(name: "Helvetica Bold", size: 40)
+        backgroundView.addSubview(scoreLabel)
+        scoreLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        
+        // position the score label using constraints
+        let labelCenterX = NSLayoutConstraint(item: scoreLabel, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: backgroundView, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
+        backgroundView.addConstraint(labelCenterX)
+        let labelBottomY = NSLayoutConstraint(item: scoreLabel, attribute: NSLayoutAttribute.TopMargin, relatedBy: NSLayoutRelation.Equal, toItem: backgroundView, attribute: NSLayoutAttribute.TopMargin, multiplier: 1, constant: 20) // sets the distance of the score label from the top
+        backgroundView.addConstraint(labelBottomY)
+        
+        var arrowView = UIImageView()
+        arrowView.image = arrow
+        backgroundView.addSubview(arrowView)
+        arrowView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        
+        // centers the arrow horizontally
+        let centerX = NSLayoutConstraint(item: arrowView, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: backgroundView, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
+        backgroundView.addConstraint(centerX)
+        
+        // centers the arrow vertically
+        let centerY = NSLayoutConstraint(item: arrowView, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: backgroundView, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0)
+        backgroundView.addConstraint(centerY)
+        
+        // sets the dimmensions of the arrow to width = 185, height = 200
+        let views = ["arrowView" : arrowView]
+        let constrainWidth = NSLayoutConstraint.constraintsWithVisualFormat("V:[arrowView(200)]", options: NSLayoutFormatOptions(0), metrics: nil, views: views)
+        backgroundView.addConstraints(constrainWidth)
+        let constrainHeight = NSLayoutConstraint.constraintsWithVisualFormat("H:[arrowView(185)]", options: NSLayoutFormatOptions(0), metrics: nil, views: views)
+        backgroundView.addConstraints(constrainHeight)
+
+        // setup the rotation for the arrow
+        let pi : CGFloat = 3.14159
+        var arrowRotate : CGAffineTransform
+        
+        switch c {
+        case BLUE:
+            arrowRotate = CGAffineTransformMakeRotation(0)
+        case GREEN:
+            arrowRotate = CGAffineTransformMakeRotation(pi)
+        case RED:
+            arrowRotate = CGAffineTransformMakeRotation(3*pi/2)
+        case ORANGE:
+            arrowRotate = CGAffineTransformMakeRotation(pi/2)
+        default:
+            arrowRotate = CGAffineTransformMakeRotation(0)
+        }
+        
+        arrowView.transform = arrowRotate // rotates the arrow in the correct direction based on color
+
+        currentColor = c
+        lastColor = c
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         var nextView: GameOverViewController = segue.destinationViewController as GameOverViewController
         nextView.score = self.score
@@ -233,6 +318,10 @@ class ViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
 
 

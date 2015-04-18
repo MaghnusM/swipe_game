@@ -45,19 +45,19 @@ class MainMenuViewController: UIViewController {
         case 1:
             MainMenuView.backgroundColor = UIColor(red: 0, green: 0.8, blue: 0.4, alpha: 1.0)
             playButton.setImage(play_green, forState: .Normal)
-            instructionsButton.setImage(instructions_green, forState: .Normal)
+            //instructionsButton.setImage(instructions_green, forState: .Normal)
         case 2:
             MainMenuView.backgroundColor = UIColor(red: 1.0, green: 0.16, blue: 0.24, alpha: 1.0)
             playButton.setImage(play_red, forState: .Normal)
-            instructionsButton.setImage(instructions_red, forState: .Normal)
+            //instructionsButton.setImage(instructions_red, forState: .Normal)
         case 3:
             MainMenuView.backgroundColor = UIColor(red: 1.0, green: 0.43, blue: 0.2, alpha: 1.0)
             playButton.setImage(play_orange, forState: .Normal)
-            instructionsButton.setImage(instructions_orange, forState: .Normal)
+            //instructionsButton.setImage(instructions_orange, forState: .Normal)
         case 4:
             MainMenuView.backgroundColor = UIColor(red: 0.15, green: 0.32, blue: 0.7, alpha: 1.0)
             playButton.setImage(play_blue, forState: .Normal)
-            instructionsButton.setImage(instructions_blue, forState: .Normal)
+            //instructionsButton.setImage(instructions_blue, forState: .Normal)
         default:
             MainMenuView.backgroundColor = UIColor.whiteColor()
         }

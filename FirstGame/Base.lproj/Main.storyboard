@@ -182,20 +182,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XbD-rO-IeP">
-                                <rect key="frame" x="250" y="333" width="100" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="YJV-4w-Xbc"/>
-                                    <constraint firstAttribute="height" constant="40" id="tpU-Oj-PLH"/>
-                                </constraints>
-                                <state key="normal" title="Button" image="instructions button - new">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Vph-8G-Ab5" kind="show" id="oTC-7W-Ffo"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8pN-Pp-wYt">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8pN-Pp-wYt">
                                 <rect key="frame" x="225" y="260" width="150" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="B3z-Q9-CxI"/>
@@ -211,14 +198,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="XbD-rO-IeP" secondAttribute="centerX" id="6kg-Tc-WHa"/>
-                            <constraint firstAttribute="centerY" secondItem="8pN-Pp-wYt" secondAttribute="centerY" id="HDa-nW-F6z"/>
+                            <constraint firstAttribute="centerY" secondItem="8pN-Pp-wYt" secondAttribute="centerY" constant="7.5" id="FHR-91-nU6"/>
+                            <constraint firstAttribute="centerY" secondItem="8pN-Pp-wYt" secondAttribute="centerY" constant="7.5" id="HDa-nW-F6z"/>
+                            <constraint firstAttribute="centerX" secondItem="8pN-Pp-wYt" secondAttribute="centerX" id="KOA-K9-nxO"/>
                             <constraint firstAttribute="centerX" secondItem="8pN-Pp-wYt" secondAttribute="centerX" id="cGM-lT-J3E"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="MainMenuView" destination="1aZ-ZQ-OeU" id="rT8-XE-aZd"/>
-                        <outlet property="instructionsButton" destination="XbD-rO-IeP" id="b2G-M5-SmO"/>
                         <outlet property="playButton" destination="8pN-Pp-wYt" id="exW-1x-bMa"/>
                     </connections>
                 </viewController>
@@ -229,7 +216,6 @@
     </scenes>
     <resources>
         <image name="instructions" width="1333" height="2000"/>
-        <image name="instructions button - new" width="421" height="171"/>
         <image name="play button" width="798" height="329"/>
     </resources>
     <inferredMetricsTieBreakers>
