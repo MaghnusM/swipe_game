@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Felix Parker. All rights reserved.
 //
 
+
 import UIKit
 
 class GameOverViewController: UIViewController {
@@ -23,12 +24,11 @@ class GameOverViewController: UIViewController {
             fileManager.writeScore(score)
         }
         
-        //creates and displays the highscore
         let highscore = fileManager.readScore()
         scoreLabel.text = "Score: \(score)"
         highscoreLabel.text = "High Score: \(highscore)"
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
