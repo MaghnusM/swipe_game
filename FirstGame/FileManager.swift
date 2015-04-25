@@ -15,7 +15,7 @@ class FileManager {
     
     init() {
         let dirPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-        let dir = dirPaths[0] as String
+        let dir = dirPaths[0] as! String
         
         path = dir + "/" + fileName
         //println(path)

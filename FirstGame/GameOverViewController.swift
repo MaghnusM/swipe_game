@@ -22,7 +22,8 @@ class GameOverViewController: UIViewController {
         if (score > fileManager.readScore()) {
             fileManager.writeScore(score)
         }
-
+        
+        //creates and displays the highscore
         let highscore = fileManager.readScore()
         scoreLabel.text = "Score: \(score)"
         highscoreLabel.text = "High Score: \(highscore)"

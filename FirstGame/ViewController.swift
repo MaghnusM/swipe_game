@@ -156,7 +156,7 @@ class ViewController: UIViewController {
         let centerY = NSLayoutConstraint(item: arrowView, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: backgroundView, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0)
         backgroundView.addConstraint(centerY)
         
-        // sets the dimmensions of the arrow to width = 185, height = 200
+        // sets the dimensions of the arrow to width = 185, height = 200
         let views = ["arrowView" : arrowView]
         let constrainWidth = NSLayoutConstraint.constraintsWithVisualFormat("V:[arrowView(200)]", options: NSLayoutFormatOptions(0), metrics: nil, views: views)
         backgroundView.addConstraints(constrainWidth)
@@ -312,7 +312,7 @@ class ViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var nextView: GameOverViewController = segue.destinationViewController as GameOverViewController
+        var nextView: GameOverViewController = segue.destinationViewController as! GameOverViewController
         nextView.score = self.score
     }
 
