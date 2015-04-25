@@ -288,7 +288,7 @@ class ViewController: UIViewController {
         
         // fade the arrow out based on the current difficulty
         UIView.animateWithDuration(difficulty, delay: 0.0, options: nil, animations: {arrowView.alpha = 0}, completion: nil)
-        UIView.animateWithDuration(difficulty, delay: 0.0, options: nil, animations: {self.backgroundView.alpha = 0}, completion: nil)
+        //UIView.animateWithDuration(difficulty, delay: 0.0, options: nil, animations: {self.backgroundView.alpha = 0}, completion: nil)
         
         // creates the animation for the previous view to move away and reveal the new view
         UIView.animateWithDuration(2.0, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 5.0, options: nil, animations: {prevBackgroundView.transform = transform}, completion: nil)
