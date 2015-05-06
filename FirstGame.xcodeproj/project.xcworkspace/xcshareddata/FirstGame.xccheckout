@@ -7,21 +7,21 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>34F66EE2-BDEE-4235-B08C-9B0239D8C20A</string>
 	<key>IDESourceControlProjectName</key>
-	<string>FirstGame</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>47977BA66D9169929292D1324805D6565C74C748</key>
-		<string>https://github.com/flixpar/swipe_game.git</string>
+		<string>https://github.com/MaghnusM/swipe_game.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>FirstGame.xcodeproj</string>
+	<string>FirstGame.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>47977BA66D9169929292D1324805D6565C74C748</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/flixpar/swipe_game.git</string>
+	<string>https://github.com/MaghnusM/swipe_game.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>47977BA66D9169929292D1324805D6565C74C748</string>
 			<key>IDESourceControlWCCName</key>
-			<string>swipe_game</string>
+			<string>Flik</string>
 		</dict>
 	</array>
 </dict>
