@@ -29,7 +29,7 @@ class MainMenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        changeBackground()
         timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("changeBackground"), userInfo: nil, repeats: true)
         
         // Do any additional setup after loading the view.
@@ -41,6 +41,12 @@ class MainMenuViewController: UIViewController {
     }
     
     func changeBackground() {
+        if count < 4 {
+            count++
+        } else {
+            count = 1
+        }
+        
         switch count {
         case 1:
             MainMenuView.backgroundColor = UIColor(red: 0, green: 0.8, blue: 0.4, alpha: 1.0)
@@ -62,11 +68,6 @@ class MainMenuViewController: UIViewController {
             MainMenuView.backgroundColor = UIColor.whiteColor()
         }
         
-        if count < 4 {
-            count++
-        } else {
-            count = 1
-        }
     }
     
 
