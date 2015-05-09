@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     var timer = NSTimer()
     var lastColor = 0
     var currentColor = 5
+    var randomArrows = false
     
     var score = 0
     var difficulty = 3.0
@@ -138,7 +139,7 @@ class ViewController: UIViewController {
         arrowView.image = arrow
         backgroundView.addSubview(arrowView)
         arrowView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        
+
         // centers the arrow horizontally
         let centerX = NSLayoutConstraint(item: arrowView, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: backgroundView, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
         backgroundView.addConstraint(centerX)
@@ -149,11 +150,11 @@ class ViewController: UIViewController {
         
         // sets the dimmensions of the arrow to width = 185, height = 200
         let views = ["arrowView" : arrowView]
-        let constrainWidth = NSLayoutConstraint.constraintsWithVisualFormat("V:[arrowView(200)]", options: NSLayoutFormatOptions(0), metrics: nil, views: views)
+        let constrainWidth = NSLayoutConstraint.constraintsWithVisualFormat("V:[arrowView(100)]", options: NSLayoutFormatOptions(0), metrics: nil, views: views)
         backgroundView.addConstraints(constrainWidth)
-        let constrainHeight = NSLayoutConstraint.constraintsWithVisualFormat("H:[arrowView(185)]", options: NSLayoutFormatOptions(0), metrics: nil, views: views)
+        let constrainHeight = NSLayoutConstraint.constraintsWithVisualFormat("H:[arrowView(92.5)]", options: NSLayoutFormatOptions(0), metrics: nil, views: views)
         backgroundView.addConstraints(constrainHeight)
-
+        
         // setup the rotation for the arrow
         let pi : CGFloat = 3.14159
         var arrowRotate : CGAffineTransform
@@ -227,6 +228,8 @@ class ViewController: UIViewController {
         
         var prevBackgroundView = backgroundView
         
+        
+        
         // creates a new view with the new color and inserts it underneath
         backgroundView = UIView(frame: CGRectMake(0, 0, screen.width, screen.height))
         backgroundView.backgroundColor = color
@@ -236,20 +239,43 @@ class ViewController: UIViewController {
         arrowView.image = arrow
         backgroundView.addSubview(arrowView)
         arrowView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        
-        // centers the arrow horizontally
-        let centerX = NSLayoutConstraint(item: arrowView, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: backgroundView, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
-        backgroundView.addConstraint(centerX)
-        
-        // centers the arrow vertically
-        let centerY = NSLayoutConstraint(item: arrowView, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: backgroundView, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0)
-        backgroundView.addConstraint(centerY)
+
+        switch randomArrows {
+        case false:
+            // centers the arrow horizontally
+            let centerX = NSLayoutConstraint(item: arrowView, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: backgroundView, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
+            backgroundView.addConstraint(centerX)
+            
+            // centers the arrow vertically
+            let centerY = NSLayoutConstraint(item: arrowView, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: backgroundView, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0)
+            backgroundView.addConstraint(centerY)
+        case true:
+            var randomX = CGFloat(45 + Int(arc4random_uniform(UInt32(UIScreen.mainScreen().bounds.width - 90))))
+            var randomY = CGFloat(125 + Int(arc4random_uniform(UInt32(UIScreen.mainScreen().bounds.height - 170))))
+            
+            
+            // randomizes the arrow horizontally
+            let centerX = NSLayoutConstraint(item: arrowView, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: backgroundView, attribute: NSLayoutAttribute.Left, multiplier: 1, constant: randomX)
+            backgroundView.addConstraint(centerX)
+            
+            // randomizes the arrow vertically
+            let centerY = NSLayoutConstraint(item: arrowView, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: backgroundView, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: randomY)
+            backgroundView.addConstraint(centerY)
+        default:
+            // centers the arrow horizontally
+            let centerX = NSLayoutConstraint(item: arrowView, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: backgroundView, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
+            backgroundView.addConstraint(centerX)
+            
+            // centers the arrow vertically
+            let centerY = NSLayoutConstraint(item: arrowView, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: backgroundView, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0)
+            backgroundView.addConstraint(centerY)
+        }
         
         // sets the dimensions of the arrow to width = 185, height = 200
         let views = ["arrowView" : arrowView]
-        let constrainWidth = NSLayoutConstraint.constraintsWithVisualFormat("V:[arrowView(200)]", options: NSLayoutFormatOptions(0), metrics: nil, views: views)
+        let constrainWidth = NSLayoutConstraint.constraintsWithVisualFormat("V:[arrowView(100)]", options: NSLayoutFormatOptions(0), metrics: nil, views: views)
         backgroundView.addConstraints(constrainWidth)
-        let constrainHeight = NSLayoutConstraint.constraintsWithVisualFormat("H:[arrowView(185)]", options: NSLayoutFormatOptions(0), metrics: nil, views: views)
+        let constrainHeight = NSLayoutConstraint.constraintsWithVisualFormat("H:[arrowView(92.5)]", options: NSLayoutFormatOptions(0), metrics: nil, views: views)
         backgroundView.addConstraints(constrainHeight)
         
         // create the score label
@@ -299,7 +325,6 @@ class ViewController: UIViewController {
     
     
 // –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
-// –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 
     
     func gameLost() {
@@ -318,6 +343,7 @@ class ViewController: UIViewController {
             difficulty = 5.0//1.0
         default:
             difficulty = 5.0//0.75
+            randomArrows = true
         }
         
         timer.invalidate()
