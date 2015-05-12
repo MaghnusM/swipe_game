@@ -1,0 +1,18 @@
+“You were so close” when they get close to highscore
+Arrows moving around at harder levels
+
+Make opening screen move in direction you flick
+Reflex settings 
+Make Arrow a little bigger
+Animation for added bonus - small bonus (1 or 2 points)
+FIX GAME OVER SCREEN
+FIX OPENING SCREEN - Felix --> Make arrows white, stop delay from white to colored screen, Smooth color transitions (not too fast)
+Whenever app is reopened, always go to main menu
+
+MODE: Multiple arrows for multiple fingers
+
+
+
+Possible:
+David: Only swipe on arrow?
+
